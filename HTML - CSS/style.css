@@ -1,0 +1,299 @@
+/* je créais mes couleurs à la racine avec le nom des variables de chaques élèments colorimétriques dont je souhaiterais disposer - exemple --color1 etc etc  */
+:root {
+    --color1: rgb(255, 215, 221);
+    --color2:   purple ;
+    --color3: rgb(252, 117, 117);
+    --color4: white ;
+    --color5: rgb(255, 193, 252) ;
+
+
+}
+
+/* Hors du corps (body) je met l'astérisque (*) qui est le sélecteur universel en CSS et je rectifie par 0 la marge et le remplissage total qui est de nature par défaut à 8 .Aussi j'ajoute une commande box-sizing: border-box; pour que mes boîtes (flexbox ou grid) soient pris en compte  */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+ }
+
+/* Je place une image de fond dans le corps (body) de la page avec la commande {background: url()} 
+je le centre avec un center/cover et une height (hauteur) au maximun du viewport (fenêtre de visualisation) height : 100 vh ; j'ajoute ma police de caractère avec font-family :  ; */
+body { background: url( ./img/foret-ciel-etoile-dans-nuit.jpg)
+    center/cover ; height: 100vh;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+    color: var(--color1) ;  /*  je viens chercher la couleur 1 que j'ai placé dans ma racine :root */
+    display: flex; /* j'entre la variable display: flex ; pour replacer les élèments de la classe  */
+    align-items: center; /*   Centrer mes éléments du body verticalement  */
+    justify-content: center; /*   Centrer mes éléments du body horizontalement  */
+
+} 
+
+ /* Dans la classe "card" je place une commande background-color: ; dont j'ai reduit l'opacité  */
+.card {
+    background-color: rgba(0, 0, 0, 0.377); 
+    width: calc(100% - 50px); /* Calc est un calcul pour rendre la width responsive  */
+    padding: 20px 20px 6px ;/* marge interne  */
+    box-shadow: 0px 6px 15px 0px rgba(0, 0, 0, 0.747);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+} 
+
+/* les pseudos-éléments before et after permettent d' ajouter un élément avant ou aprés l'élément de la classe . Ici j'injecte un 
+                                         symbole prit sur le site toptal  */
+/* .card:before {      
+     content: "\263E"  ; */
+    /* placement  */
+     /* position: absolute;                   */
+    /* placement  */
+     /* top: 12px; */
+    /* placement  */
+    /* left: 190px; */
+    /* font-size: 2.4rem ; taille du symbole */
+/* } */
+h1 { 
+        margin-bottom: 24px; 
+        position: relative;    /* ici je créais une marge entre le titre de taille h1 et le lorem ipsum de 60 caractères */
+}
+/* Barre de séparation du titre placé avec la variable "after" */
+h1::after  
+    {content: "";
+    position: absolute;
+    background: var(--color1);
+    height: 1px;
+    width: 100%;
+     bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    animation: h1anim 1.8s ease-in-out forwards; /* "forwards" sert à ce que l'animation reste dans sa position finale  */
+    transform-origin: center; /*  Débute du centre , de la gauche ou droite ... */
+    }
+/* Animation d'éléments (barre de séparation titre) */
+    @keyframes h1anim {
+        100% {
+            transform:translateX(-50%) scaleX(1);
+        }
+    }
+
+ /* Pour répartir par colonnes */
+.grid-container {        
+    display: grid;          
+    grid-template-columns: 20% 80%; 
+}
+.polygon-container {
+    filter: drop-shadow(-1px 6px 3px var(--color2));/* Ceci est l'unique moyen d'ajouter une ombre au polygone  */
+    place-self: center left; }  /* Ceci pour centrer le polygon en responsive .Il faut que le parent soit placé en grid */
+
+/* Pour placer une forme polygonale dans la classe de la division "polygon", je récupère dans un générateur polygonal type www.benettfeely.fr une forme en copiant sa réference CSS et la colle dans le clip-path: polygon () comme ci-dessous */
+.polygon {
+    clip-path: polygon(38% 0, 100% 28%, 70% 48%, 100% 65%, 29% 100%, 0 81%, 35% 65%, 6% 49%, 34% 29%, 0 15%) ;
+    background-color: coral;  /* Je détermine sa couleur en uniforme ou dégradé . Pour le dégradé , la première valeur est le degré d'inclinaison et ensuite je peux attribué mes couleurs root(racine) que j'avais crée au préalable ... */
+    height: 100px;     /* Je détermine sa hauteur  */
+    width: 100px;      /* Je détermine sa largeur  */
+}
+
+/* Pour mettre un polygone en plus ou après(after) avec une position(absolute) changeable à foison qui contient un texte ( content:"" ;) */
+.polygon:after {
+    content: "cr3d";
+    position: absolute;
+    color: var(--color3);
+    background: var(--color5);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(335deg);
+    width: 90px;
+    padding: 4px;
+    text-align: center;
+
+}
+/* Paramétrage du texte  */
+.p {
+    line-height: 26px ;     /* intervalle entre chaques lignes */
+
+    margin: 20px 0; /* Marges externes  */
+   
+    display: -webkit-box; /* Ces 3 lignes lancées par le webkit permettent de modeler précisement le texte */
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;   /* Pour cacher tout ce qui dépasse  */
+    text-align: justify;     /* Pour justifier le texte */
+}
+ /* ici je fais en sorte que lorsque je séléctionne du texte et le met en surbrillance il prenne la couleur souhaitée  */
+p::selection {
+    background: var(--color3); 
+    color: var(--color1);         
+}
+    /* J'utilise cela pour que lorsque les cases de mes options (checkbox) 1, 2 et 3 sont cochées mon texte parenté change  */
+.checkbox-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0 30px;
+    perspective: 3px;
+}
+/* stylisation des checkbox */
+input[type="checkbox"]   {
+    display: none;
+}
+input[type="checkbox"]:checked + label {
+    background: var(--color4);
+    color: var(--color3);
+    transform: scale(1.2) ;/*  pour grossir la boîte au clic */
+    filter: brightness(120%); /* luminosité */
+}
+label { 
+    cursor: pointer; /*transformer au survol son curseur en pointeur  */
+    border: 1px solid var(--color2) ;
+    background: var(--color3);
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.2s;
+    user-select: none; /* Pour ne pas pouvoir séléctionner le texte et le mettre en surbrillance  */
+}
+/* Animation des boutons (options 1,2,3) */
+label:first-of-type:hover {
+    animation: label1 0.7s infinite linear; /* durée infinie */
+}
+/*Configuration de l'animation de label1 pour effet de battement infini*/
+ @keyframes label1 {
+     50% {
+     transform: scale(1.25);
+     background: var(--color2)
+}
+    100% {
+    transform: scale(1);
+    background: var(--color3);
+    } 
+} 
+/* Pour séléctionner le 2nd label (4e enfant de la class checkbox-container avec la méthode ":nth-child()" et réaliser de l'animation 3D .  !!! POUR QUE CELA FONCTIONNE , IL NE FAUT PAS OUBLIER LA PERSPECTIVE SUR LE PARENT !!! */
+label:nth-child(4):hover {
+    animation: label2 3s infinite linear;
+}
+@keyframes label2 {
+    33% {
+        transform: translateZ(6px);
+    }
+    66% {
+        transform: translateZ(-10px);
+    }
+    100% {
+        transform: translateZ(0px);
+    }
+}
+
+.email {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.email input{
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    border:   0.5px solid transparent ;  /*ici je change la valeur qui était "none" en border: 0.5px transparent pour ne pas que mon input border du bloc de code en dessous créait un décallage de bordure en s'activant  */
+    transition: 0.3s;
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color1);
+    user-select: none; /* Pour ne pas pouvoir séléctionner le texte et le mettre en surbrillance  */
+         min-width: 180px;    /*     _                                                                  */
+         width: 35%;          /*    |  ici je responsivise en indiquant une marge avec un pourcentage   */
+         max-width: 300px;   /*     |_                                                                  */
+}
+/* pour changer le comportement de la box email lorsque le curseur à cliqué celui-ci */
+input[type="text"]:focus {
+    background-color: transparent;
+    border: 0.5px solid var(--color5);
+
+}
+input[type="text"]::placeholder {
+        color: var(--color3);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+/* le bouton valider */
+button {
+        cursor: pointer;
+        background: var(--color3);
+        border: none;
+        font-size: 1.3rem;
+        padding: 10px 20px;
+        border-radius: 150px;
+        margin: 0 auto;
+        display: block;
+        transition: 0.1s;
+        user-select: none; /* Pour ne pas pouvoir séléctionner le texte et le mettre en surbrillance  */
+}
+button:hover {
+        letter-spacing: 3px;
+    }
+    button:active {
+        transform: scale(1.2);
+        background: rgb(25, 93, 196);
+    }
+button:hover + a {
+        opacity: 1;
+        /* transform: translateY(0px);  */
+    }
+a {
+        color: var(--color5);
+        text-align: center;
+        display: block;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: 0.6s;
+
+    }    
+    a:visited {
+        color: var(--color1);
+ 
+    }
+    /* La soucoupe volante  */
+    img {
+        height: 60px;
+        position: absolute;
+        filter: drop-shadow(0px 6px 3px white);  /*Pour créer une lueur type réacteur du vaisseau  */
+         z-index: -1; /*Pour placer le vaisseau derrière les autres élèments(position négative sur l'axe des Z )  */
+         animation: spaceship 60s infinite linear;
+    }
+    /* Animation du vaisseau  */
+    @keyframes spaceship {
+        0% {
+            left:30%  ;
+            top: -10%;
+            transform: rotate(0deg);
+        }
+        15% {
+            left:30%  ;
+            top: 18%;
+            transform: rotate(0deg);
+    }
+    16% {
+        left:30%  ;
+        top: 20%;
+        transform: rotate(15deg);
+}
+16.7% {
+    left:30%  ;
+    top: 20%;
+    transform: rotate(15deg);
+}
+20.5% {
+    left:90%  ;
+    top: 22%;
+    transform: rotate(25deg);
+}
+
+    21.7% {
+        left:90%  ;
+        top: 22%;
+        transform: rotate(0deg);
+    }
+    22.7% {
+        left:90%  ;
+        top: 22%;
+        transform: rotate(0deg);
+    }
+   
+    23.7% {
+        left:90%  ;
+        top: 22%;
+        transform: rotate(-15deg);
+    }
+    

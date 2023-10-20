@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Titre de la page (information configurative non visible à l'écran) -->
+    <title>HTML - CSS</title>
+    <!-- Icone du site  -->
+    <link rel="shortcut icon" href="img/cr3d.png" />
+    <!-- Link à ma feuille de style css  -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Je créais une division avec une classe appelée "card" pour carte en Français  -->
+    <div class="card">
+      <!-- Le titre de la page visible à l'écran -->
+      <h1>HTML - CSS</h1>
+      <!-- Pour créer une division je peux utiliser le raccourcis .(point) qui est ce que j'entre dans le css pour pointer vers cette classe , suivi du nom de la classe voulue-->
+
+      <div class="grid-container">
+        <!-- Parragraphe avec un lorem ipsum de 60 charactères  -->
+        <div class="polygon-container">
+          <div class="polygon"></div>
+        </div>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+          perspiciatis adipisci ab saepe facere cum quasi? Itaque, quas! In
+          blanditiis quia soluta saepe reprehenderit ex exercitationem ullam
+          reiciendis laboriosam! Alias fugit praesentium accusamus? Temporibus
+          non aspernatur molestiae molestias tempore iusto facilis nihil sequi
+          quia a, provident fugit obcaecati similique optio nisi, commodi veniam
+          exercitationem sed eveniet! Magni repudiandae ut numquam!
+        </p>
+      </div>
+      <div class="checkbox-container">
+        <!-- Je place un INPUT avec une id (identity ou identité)... L'élément HTML <input> est utilisé pour créer un contrôle interactif dans un formulaire web qui permet à l'utilisatrice ou l'utilisateur de saisir des données. Les saisies possibles et le comportement de l'élément <input> dépendent fortement de la valeur indiquée dans son attribut type et de ses autres attributs. Il existe différents contrôles pour la saisie, qui dépendent de l'appareil utilisé et de l'agent utilisateur. -->
+        <input type="checkbox" id="option1" />
+        <!--Je place un LABEL pour l'id "option1 " ... <label> L'élément HTML <label> représente une légende pour un objet d'une interface utilisateur. Il peut être associé à un contrôle en utilisant l'attribut for ou en plaçant l'élément du contrôle à l'intérieur de l'élément <label> . Un tel contrôle est appelé contrôle étiqueté par l'élément <label> . -->
+        <label for="option1">Option1</label>
+
+        <input type="checkbox" id="option2" />
+        <label for="option2">Option2</label>
+
+        <input type="checkbox" id="option3" />
+        <label for="option3">Option3</label>
+      </div>
+      <div class="email">
+        <input type="text" placeholder="Entrez votre email" />
+      </div>
+      <button>Valider</button>
+      <a href="http://www.google.com">Conditions générales de ventes.</a>
+    </div>
+    <img src="./img/pngegg.png" alt="spaceship" />
+  </body>
+</html>
